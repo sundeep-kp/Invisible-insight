@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <!-- Mode Selection Screen -->
+    <LinearLayout
+        android:id="@+id/mode_selection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invisible Insight"
+            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="40dp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"/>
+
+        <!-- Normal Mode Card Container -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="16dp">
+            
+            <FrameLayout
+                android:id="@+id/normal_mode_particles"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_normal_mode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="#404CAF50" 
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#4CAF50"
+                app:strokeWidth="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    
+                    <ImageView
+                        android:id="@+id/normal_mode_halo"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:src="@drawable/halo_green"
+                        android:layout_gravity="center"
+                        android:alpha="0.3"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NORMAL MODE"
+                        android:textColor="#4CAF50"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:shadowColor="#000000"
+                        android:shadowDx="2"
+                        android:shadowDy="2"
+                        android:shadowRadius="4"/>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+
+        <!-- Death Mode Card Container -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="16dp">
+            
+            <View
+                android:id="@+id/death_mode_glow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/glow_red"
+                android:alpha="0.9"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_death_mode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="#40F44336"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#F44336"
+                app:strokeWidth="2dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Layer 1: Bottom Lightning (Slow, thick) -->
+                    <com.example.invisibleinsight.LightningView
+                        android:id="@+id/lightning_layer_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.5"/>
+
+                    <!-- Layer 2: Middle Lightning -->
+                    <com.example.invisibleinsight.LightningView
+                        android:id="@+id/lightning_layer_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.7"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DEATH MODE"
+                            android:textColor="#F44336"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:shadowColor="#000000"
+                            android:shadowDx="2"
+                            android:shadowDy="2"
+                            android:shadowRadius="4"/>
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(Coming Soon)"
+                            android:textColor="#FFEBEE"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+            
+            <!-- Layer 3: Top Lightning (Fast, chaotic, leaks outside) -->
+            <!-- Placed OUTSIDE the card view to allow leaking -->
+            <com.example.invisibleinsight.LightningView
+                android:id="@+id/lightning_layer_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="-20dp" 
+                android:alpha="0.9"/>
+            
+            <FrameLayout
+                android:id="@+id/sparks_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- Level Selection Screen -->
+    <ScrollView
+        android:id="@+id/level_selection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Gyro Series -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gyro Series"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:scrollbars="none">
+                
+                <LinearLayout
+                    android:id="@+id/gyro_levels_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp">
+                    <include layout="@layout/item_level_card" android:id="@+id/gyro_l1"/>
+                    <include layout="@layout/item_level_card" android:id="@+id/gyro_l2"/>
+                    <include layout="@layout/item_level_card" android:id="@+id/gyro_l3"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Touch Series -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Touch Series"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/touch_levels_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp">
+                    <include layout="@layout/item_level_card" android:id="@+id/touch_l1"/>
+                    <include layout="@layout/item_level_card" android:id="@+id/touch_l2"/>
+                    <include layout="@layout/item_level_card" android:id="@+id/touch_l3"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Absolute Series -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Absolute Series"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/absolute_levels_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp">
+                    <include layout="@layout/item_level_card" android:id="@+id/absolute_l1"/>
+                    <include layout="@layout/item_level_card" android:id="@+id/absolute_l2"/>
+                    <include layout="@layout/item_level_card" android:id="@+id/absolute_l3"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

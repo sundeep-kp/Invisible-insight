@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="24sp"
+        android:layout_marginBottom="24dp"/>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/maze_visibility_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Maze" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/arrow_keys_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Touch Mode" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/control_mode_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Control Mode: Velocity (Off) / Absolute (On)" />
+        
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/chatbot_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Enable AI Chatbot"
+        android:checked="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Sensitivity" />
+
+    <SeekBar
+        android:id="@+id/sensitivity_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Vibration Intensity" />
+
+    <SeekBar
+        android:id="@+id/vibration_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100" />
+        
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Sprite Style" />
+
+    <SeekBar
+        android:id="@+id/sprite_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="3" />
+
+</LinearLayout>
